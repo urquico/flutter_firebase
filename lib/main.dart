@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,13 +13,27 @@ Future<void> main() async {
   if (kIsWeb) {
     // Add Firebase initialization before `runApp()`
     await Firebase.initializeApp(
-        options: FirebaseOptions(
-            apiKey: dotenv.env['apiKey'] ?? '',
-            appId: dotenv.env['appId'] ?? '',
-            messagingSenderId: dotenv.env['messagingSenderId'] ?? '',
-            projectId: dotenv.env['projectId'] ?? ''));
-    runApp(const MyApp());
+      options: FirebaseOptions(
+          apiKey: dotenv.env['apiKey'] ?? '',
+          appId: dotenv.env['appId'] ?? '',
+          messagingSenderId: dotenv.env['messagingSenderId'] ?? '',
+          projectId: dotenv.env['projectId'] ?? ''),
+    );
   }
+
+  if (Platform.isAndroid) {
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: dotenv.env['androidApiKey'] ?? '',
+          appId: dotenv.env['androidAppId'] ?? '',
+          messagingSenderId: dotenv.env['messagingSenderId'] ?? '',
+          projectId: dotenv.env['projectId'] ?? ''),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
