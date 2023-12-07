@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAhtY28OooPjCwlAs_RpHrGdzeQ7hjqN-E</string>
+	<string>${apiKey}</string>
 	<key>GCM_SENDER_ID</key>
-	<string>943891484174</string>
+	<string>${messagingSenderId}</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.flutterFirebase</string>
 	<key>PROJECT_ID</key>
-	<string>flutter-firebase-c5888</string>
+	<string>${projectId}</string>
 	<key>STORAGE_BUCKET</key>
-	<string>flutter-firebase-c5888.appspot.com</string>
+	<string>${storageBucket}</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:943891484174:ios:cd5dd1d5247aea5162f65f</string>
+	<string>${iosAppId}</string>
 </dict>
 </plist>
