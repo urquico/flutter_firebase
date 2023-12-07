@@ -39,7 +39,8 @@ app.*.symbols
 app.*.map.json
 
 .env
-/ios/Runner/GoogleService-Info.plist
+ios/Runner/GoogleService-Info.plist
+
 
 
 # Android Studio will place build artifacts here
