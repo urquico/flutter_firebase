@@ -1,7 +1,23 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await dotenv.load(fileName: "lib/.env");
+  // Add `WidgetsFlutterBinding.ensureInitialized();` before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (kIsWeb) {
+    // Add Firebase initialization before `runApp()`
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: dotenv.env['apiKey'] ?? '',
+            appId: dotenv.env['appId'] ?? '',
+            messagingSenderId: dotenv.env['messagingSenderId'] ?? '',
+            projectId: dotenv.env['projectId'] ?? ''));
+    runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
